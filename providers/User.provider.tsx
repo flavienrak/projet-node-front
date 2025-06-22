@@ -4,11 +4,8 @@ import React from 'react';
 import qs from 'query-string';
 import LoadingPage from '@/app/loading';
 
-import { jwtService } from '@/services/auth.service';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { getUserService } from '@/services/user.service';
 import { useDispatch } from 'react-redux';
-import { setUserReducer } from '@/redux/slices/user.slice';
 
 interface CurrentQueryInterface {
   step?: string | number;
@@ -21,7 +18,6 @@ interface UserProviderContextType {
   handleRemoveQuery: (value: string) => void;
 }
 
-export const videoUri = process.env.NEXT_PUBLIC_VIDEO_URI;
 export const backendUri = process.env.NEXT_PUBLIC_API_URL;
 
 const UserContext = React.createContext<UserProviderContextType | undefined>(
@@ -54,36 +50,33 @@ export default function UserProvider({
   const notProtectedPaths = ['/'];
 
   React.useEffect(() => {
-    (async () => {
-      const res = await jwtService();
-
-      if (res.user) {
-        setUserId(res.user.id);
-
-        if (res.user.role === 'user') {
-        } else {
-        }
-        setIsLoading(false);
-      } else {
-        if (!notProtectedPaths.includes(pathname)) {
-          window.location.href = '/';
-        } else {
-          setIsLoading(false);
-        }
-      }
-    })();
+    // (async () => {
+    //   const res = await jwtService();
+    //   if (res.user) {
+    //     setUserId(res.user.id);
+    //     if (res.user.role === 'user') {
+    //     } else {
+    //     }
+    //     setIsLoading(false);
+    //   } else {
+    //     if (!notProtectedPaths.includes(pathname)) {
+    //       window.location.href = '/';
+    //     } else {
+    setIsLoading(false);
+    //     }
+    //   }
+    // })();
   }, [pathname]);
 
   React.useEffect(() => {
-    if (userId) {
-      (async () => {
-        const res = await getUserService();
-
-        if (res.user) {
-          dispatch(setUserReducer({ user: res.user }));
-        }
-      })();
-    }
+    // if (userId) {
+    //   (async () => {
+    //     const res = await getUserService();
+    //     if (res.user) {
+    //       dispatch(setUserReducer({ user: res.user }));
+    //     }
+    //   })();
+    // }
   }, [userId]);
 
   React.useEffect(() => {

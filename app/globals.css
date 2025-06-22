@@ -3,6 +3,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+  font-family: 'Michroma';
+  src: url('/fonts/Michroma.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --primary-color: #06b6d4;
   --secondary-color: #1e3a8a;
@@ -159,10 +167,11 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: 'Michroma', sans-serif;
 }
 
 *::selection {
-  background: var(--u-secondary-color);
+  background: black;
   color: #fff;
 }
 

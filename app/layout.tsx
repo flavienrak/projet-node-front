@@ -16,8 +16,8 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'App',
-  description: 'App',
+  title: 'Header Analysis',
+  description: 'Header Analysis',
 };
 
 export default function RootLayout({
