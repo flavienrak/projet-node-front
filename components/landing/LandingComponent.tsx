@@ -126,7 +126,10 @@ export default function LandingComponent() {
               <Label className="text-xl">Details :</Label>
               <CodeMirrorComponent
                 code={headers
-                  .map((item) => `"${item.meaning}"\n // ${item.value}`)
+                  .map(
+                    (item) =>
+                      `${item.key} : "${item.value}"\n// ${item.meaning}`,
+                  )
                   .join('\n\n')}
               />
             </div>
