@@ -102,6 +102,7 @@ export default function UpdateTodo({
           host: res.host,
           status: res.status,
           url: res.url,
+          headers: res.headers,
         }),
       );
     }
